@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
+import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [UsersService]
 })
 export class AppComponent {
-  users = [
-    {name: 'WFM 1'},
-    {name: 'WFM 2'},
-    {name: 'WFM 3'},
-    {name: 'WFM 4'},
-    {name: 'WFM 5'},
-    {name: 'WFM 6'},
-    {name: 'WFM 7'},
-    {name: 'WFM 8'}
-  ]
+  users = [];
+
+  constructor(private usersService: UsersService) {}
+
+  ngOnInit() {
+    //this.users = this.UsersService.users
+    this.usersService.getUsers();
+    /*.subscribe( next: users => {
+      console.log(users);
+    })*/
+  }
 }
