@@ -16,6 +16,7 @@ export class AppComponent {
     /* this.users = this.UsersService.users */
       this.usersService.getUsers().subscribe(users => {
         console.log(users);
+        this.users = users;
       });
   }
 }
