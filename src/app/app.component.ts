@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
-import { UsersService } from './users.service';
+
+class Item{
+    purchase: string;
+    done: boolean;
+    price: number;
+
+    constructor(purchase: string, price: number) {
+
+        this.purchase = purchase;
+        this.price = price;
+        this.done = false;
+    }
+}
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [UsersService]
+    selector: 'pages-app',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  users = [];
+    items: Item[] = [ ];
 
-  constructor(private usersService: UsersService) {}
-
-  ngOnInit() {
-    /* this.users = this.UsersService.users */
-      this.usersService.getUsers().subscribe(users => {
-        console.log(users);
-        this.users = users;
-      });
-  }
+    addItem(text: string, price: number): void {
+        if(text==null || text.trim()=="" || price==null)
+            return;
+        this.items.push(new Item(text, price));
+    }
 }

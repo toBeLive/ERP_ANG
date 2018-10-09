@@ -1,22 +1,10 @@
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { HttpModule } from '@angular/http';
-import {HoverDirective} from './hover.directive';
-
+import { FormsModule }   from '@angular/forms';
+import { AppComponent }   from './app.component';
 @NgModule({
-  declarations: [
-      AppComponent,
-      UserComponent,
-      HoverDirective
-  ],
-  imports: [
-      BrowserModule,
-      HttpModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports:      [ BrowserModule, FormsModule ],
+    declarations: [ AppComponent ],
+    bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
